@@ -1,19 +1,8 @@
 package domain
 
-import (
-	"time"
-)
-
 type Log struct {
-	Timestamp time.Time
-	Level string
-	Message string
-	Service string
+	TS      int64 `json:"ts"` // unix ms
+	Level   string `json:"level"`
+	Message string `json:"message"`
+	Service string `json:"service"`
 }
-
-// info
-// error
-// debug
-// trace/verbose
-// warn
-// fatal
