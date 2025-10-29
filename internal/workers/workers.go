@@ -3,6 +3,7 @@ package workers
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"sync"
 
 	"github.com/blobtrtl3/trtl3-logpool/internal/usecase"
@@ -29,6 +30,8 @@ func LogQueueWorkers(ctx context.Context, wg *sync.WaitGroup, redis *redis.Clien
 				if err := logs.Create(&log); err != nil {
 					continue
 				}
+
+				fmt.Printf("worker id[%d]", id)
 			}
 		}(i+1)
 	}
